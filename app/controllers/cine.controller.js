@@ -61,7 +61,7 @@ exports.delete = (req, res) => {
   Cine.destroy({ where: { id } })
     .then(count =>
       count == 1
-        ? res.status(204).send()
+        ? res.status(200).send({ message: `Contenido con id=${id} eliminado exitosamente.` })
         : res.status(404).send({ message: `No se pudo eliminar el contenido con id=${id}.` })
     )
     .catch(err => res.status(500).send({ message: err.message }));
